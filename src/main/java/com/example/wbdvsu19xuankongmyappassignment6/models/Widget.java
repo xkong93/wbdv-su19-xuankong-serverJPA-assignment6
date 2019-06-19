@@ -1,6 +1,8 @@
 package com.example.wbdvsu19xuankongmyappassignment6.models;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +14,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="widgets")
+@Table(name = "widgets")
 public class Widget {
   public enum Type {
     HEADING,
@@ -22,9 +24,10 @@ public class Widget {
     LIST,
   }
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Enumerated(EnumType.STRING)
   private Type type;
   private String name;
   private String size;

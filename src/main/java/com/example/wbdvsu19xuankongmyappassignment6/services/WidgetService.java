@@ -1,68 +1,53 @@
 package com.example.wbdvsu19xuankongmyappassignment6.services;
 
 import com.example.wbdvsu19xuankongmyappassignment6.models.Widget;
+import com.example.wbdvsu19xuankongmyappassignment6.repositories.WidgetRepository;
 
-import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 /**
  * @author Xuan Kong
  * @Date 2019-06-11.
  */
+@Service
 public class WidgetService {
 
-  public static List<Widget> widgets = new ArrayList<>();
-
-
-  static {
-    widgets.add(new Widget((long)123, Widget.Type.HEADING, "Widget 1", "1", "heading demo text", "", "1"));
-    widgets.add(new Widget((long)234, Widget.Type.PARAGRAPH, "Widget 2", "2", "para demo text", "", "1"));
-    widgets.add(new Widget((long)345, Widget.Type.IMAGE, "Widget 3", "2", "img demo text", "https://northeastern.blackboard.com/branding/_1_1/NortheasternUniversityBlackboardBannerGray.png", "1"));
-    widgets.add(new Widget((long)567, Widget.Type.LINK, "Widget 4", "2", "link demo text", "https://northeastern.blackboard.com/", "0"));
-    widgets.add(new Widget((long)789, Widget.Type.LIST, "Widget 5", "2", "Hello\nWorld", "", "0"));
-  }
+  @Autowired
+  WidgetRepository repository;
 
   public List<Widget> createWidget(Widget widget) {
-    widgets.add(widget);
-    return widgets;
+    repository.save(widget);
+    return findAllWigets();
   }
 
 
   public List<Widget> findAllWigets() {
-    return widgets;
+    return (List<Widget>) repository.findAll();
   }
 
 
   public Widget findWidgetById(Long id) {
-    for (Widget widget : widgets) {
-      if (widget.getId().equals(id)) {
-        return widget;
-      }
-    }
-    return null;
+    Widget widget = repository.findById(id).get();
+    return widget;
   }
 
   public Widget updateWidget(Long wid, Widget newWidget) {
+    Widget widget = repository.findById(wid).get();
+    widget.setType(newWidget.getType());
+    widget.setName(newWidget.getName());
+    widget.setSize(newWidget.getSize());
+    widget.setText(newWidget.getText());
+    widget.setSrc(newWidget.getSrc());
+    widget.setIsOrder(newWidget.getIsOrder());
+    repository.save(widget);
 
-    for (Widget widget : widgets) {
-      if (widget.getId().equals(wid)) {
-        widget.setType(newWidget.getType());
-        widget.setName(newWidget.getName());
-        widget.setSize(newWidget.getSize());
-        widget.setText(newWidget.getText());
-        widget.setSrc(newWidget.getSrc());
-        widget.setIsOrder(newWidget.getIsOrder());
-        return newWidget;
-      }
-    }
-    return null;
+    return widget;
   }
 
   public void deleteWidget(Long wid) {
-    for (int i = 0; i < widgets.size(); i++) {
-      if (widgets.get(i).getId().equals(wid)) {
-        widgets.remove(i);
-      }
-    }
+    repository.deleteById(wid);
   }
 }

@@ -3,6 +3,7 @@ package com.example.wbdvsu19xuankongmyappassignment6.controller;
 import com.example.wbdvsu19xuankongmyappassignment6.models.Course;
 import com.example.wbdvsu19xuankongmyappassignment6.services.CourseService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +24,11 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 public class CourseController {
+
+  @Autowired
   CourseService service;
 
   CourseController() {
-    service = new CourseService();
   }
 
   @PostMapping("/api/courses")

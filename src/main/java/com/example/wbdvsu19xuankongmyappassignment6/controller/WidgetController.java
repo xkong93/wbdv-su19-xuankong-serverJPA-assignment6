@@ -3,6 +3,7 @@ package com.example.wbdvsu19xuankongmyappassignment6.controller;
 import com.example.wbdvsu19xuankongmyappassignment6.models.Widget;
 import com.example.wbdvsu19xuankongmyappassignment6.services.WidgetService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ import java.util.List;
 @CrossOrigin("*")
 public class WidgetController {
 
+  @Autowired
   WidgetService widgetService;
 
   WidgetController() {
