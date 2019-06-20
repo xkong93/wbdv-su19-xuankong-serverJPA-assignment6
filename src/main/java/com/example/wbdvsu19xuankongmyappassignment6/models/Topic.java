@@ -17,7 +17,7 @@ import javax.persistence.Table;
  * @Date 2019-06-19.
  */
 @Entity
-@Table(name="topic")
+@Table(name = "topic")
 public class Topic {
 
   @Id
@@ -28,6 +28,7 @@ public class Topic {
   @ManyToOne
   @JsonIgnore
   private Lesson lesson;
+
 
   @OneToMany(mappedBy = "topic")
   private List<Widget> widgets;
@@ -54,5 +55,13 @@ public class Topic {
 
   public void setLesson(Lesson lesson) {
     this.lesson = lesson;
+  }
+
+  public List<Widget> getWidgets() {
+    return widgets;
+  }
+
+  public void setWidgets(List<Widget> widgets) {
+    this.widgets = widgets;
   }
 }

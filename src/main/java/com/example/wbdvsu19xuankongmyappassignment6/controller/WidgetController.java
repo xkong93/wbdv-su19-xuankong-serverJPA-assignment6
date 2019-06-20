@@ -28,39 +28,35 @@ public class WidgetController {
   @Autowired
   WidgetService widgetService;
 
-  WidgetController() {
 
-  }
-
-  @PostMapping("/api/widget")
+  @PostMapping("/api/topic/{tid}/widget")
   public List<Widget> createWidget(
+          @PathVariable("tid") Long tid,
           @RequestBody Widget widget) {
-    widgetService.createWidget(widget);
-    return widgetService.findAllWigets();
+    widgetService.addWidgetToTopic(tid,widget);
+    return widgetService.findAllWidgetForTopic(tid);
   }
 
-  @GetMapping("/api/widget")
-  public List<Widget> findAllWigets(Widget widget) {
-
-    return widgetService.findAllWigets();
+  @GetMapping("/api/topic/{tid}/widget")
+  public List<Widget> findAllWigets(@PathVariable("tid") Long tid) {
+    return widgetService.findAllWidgetForTopic(tid);
   }
 
 
-  @GetMapping("/api/widgets/{widgetId}")
-  public Widget findWidgetById(@PathVariable("widgetId") Long id) {
-    return widgetService.findWidgetById(id);
+  @GetMapping("/api/widget/{wid}")
+  public Widget findWidgetById(@PathVariable("wid") Long wid) {
+    return widgetService.findWidgetById(wid);
   }
 
-  @PutMapping("/api/widgets/{widgetId}")
+  @PutMapping("/api/widget/{wid}")
   public Widget updateWidget(
-          @PathVariable("widgetId") Long wid,
+          @PathVariable("wid") Long wid,
           @RequestBody Widget newWidget) {
     return widgetService.updateWidget(wid, newWidget);
   }
 
-  @DeleteMapping("/api/widgets/{widgetId}")
-  public void deleteWidget(@PathVariable("widgetId") Long wid) {
-
+  @DeleteMapping("/api/widget/{wid}")
+  public void deleteWidget(@PathVariable("wid") Long wid) {
     widgetService.deleteWidget(wid);
   }
 }

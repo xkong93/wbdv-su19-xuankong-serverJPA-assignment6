@@ -1,6 +1,8 @@
 package com.example.wbdvsu19xuankongmyappassignment6.services;
 
+import com.example.wbdvsu19xuankongmyappassignment6.models.Topic;
 import com.example.wbdvsu19xuankongmyappassignment6.models.Widget;
+import com.example.wbdvsu19xuankongmyappassignment6.repositories.TopicRepository;
 import com.example.wbdvsu19xuankongmyappassignment6.repositories.WidgetRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +20,27 @@ public class WidgetService {
   @Autowired
   WidgetRepository repository;
 
-  public List<Widget> createWidget(Widget widget) {
-    repository.save(widget);
-    return findAllWigets();
+  @Autowired
+  TopicRepository topicRepository;
+
+  public List<Widget> addWidgetToTopic(Long tid, Widget newWidget) {
+    Topic topic = topicRepository.findById(tid).get();
+    newWidget.setTopic(topic);
+    repository.save(newWidget);
+    return findAllWidgetForTopic(tid);
   }
 
+ public List<Widget> findAllWidgetForTopic(Long tid) {
+    Topic topic = topicRepository.findById(tid).get();
+    return topic.getWidgets();
+  }
 
   public List<Widget> findAllWigets() {
     return (List<Widget>) repository.findAll();
   }
 
-
-  public Widget findWidgetById(Long id) {
-    Widget widget = repository.findById(id).get();
-    return widget;
+  public Widget findWidgetById(Long wid) {
+    return repository.findById(wid).get();
   }
 
   public Widget updateWidget(Long wid, Widget newWidget) {
@@ -43,7 +52,6 @@ public class WidgetService {
     widget.setSrc(newWidget.getSrc());
     widget.setIsOrder(newWidget.getIsOrder());
     repository.save(widget);
-
     return widget;
   }
 

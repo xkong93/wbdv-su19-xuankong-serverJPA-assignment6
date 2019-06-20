@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
  * @author Xuan Kong
  * @Date 2019-06-19.
  */
+@RestController
 public class LessonController {
 
   @Autowired

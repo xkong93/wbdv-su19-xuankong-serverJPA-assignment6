@@ -110,4 +110,12 @@ public class Widget {
   public void setIsOrder(String isOrder) {
     this.isOrder = isOrder;
   }
+
+  public Topic getTopic() {
+    return topic;
+  }
+
+  public void setTopic(Topic topic) {
+    this.topic = topic;
+  }
 }
