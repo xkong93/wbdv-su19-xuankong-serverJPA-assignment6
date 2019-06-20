@@ -1,9 +1,12 @@
 package com.example.wbdvsu19xuankongmyappassignment6.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -13,8 +16,9 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="courses")
+@Table(name = "courses")
 public class Course {
+
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +26,14 @@ public class Course {
   private String title;
   private String owner;
   private String modifiedDate;
-  public Course(){
+
+
+  //reason: course might have several one to many relationships
+  // so it needs use mappedBy to identify which obj you want to map
+  @OneToMany(mappedBy = "course")
+  private List<Module> modules;
+
+  public Course() {
 
   }
 
@@ -31,6 +42,14 @@ public class Course {
     this.title = title;
     this.owner = owner;
     this.modifiedDate = modifiedDate;
+  }
+
+  public List<Module> getModules() {
+    return modules;
+  }
+
+  public void setModules(List<Module> modules) {
+    this.modules = modules;
   }
 
   public Long getId() {
@@ -63,5 +82,16 @@ public class Course {
 
   public void setModifiedDate(String modifiedDate) {
     this.modifiedDate = modifiedDate;
+  }
+
+  @Override
+  public String toString() {
+    return "Course{" +
+            "id=" + id +
+            ", title='" + title + '\'' +
+            ", owner='" + owner + '\'' +
+            ", modifiedDate='" + modifiedDate + '\'' +
+            ", modules=" + modules +
+            '}';
   }
 }

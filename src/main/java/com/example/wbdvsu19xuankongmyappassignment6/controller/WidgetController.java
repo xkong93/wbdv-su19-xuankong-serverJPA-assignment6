@@ -29,7 +29,7 @@ public class WidgetController {
   WidgetService widgetService;
 
   WidgetController() {
-    widgetService = new WidgetService();
+
   }
 
   @PostMapping("/api/widgets")
