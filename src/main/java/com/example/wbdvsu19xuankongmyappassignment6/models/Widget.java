@@ -1,11 +1,14 @@
 package com.example.wbdvsu19xuankongmyappassignment6.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -35,11 +38,15 @@ public class Widget {
   private String src;
   private String isOrder;
 
+  @ManyToOne
+  @JsonIgnore
+  private Topic topic;
+
   public Widget() {
   }
 
-  public Widget(Long id, Type type, String name, String size, String text, String src, String isOrder) {
-    this.id = id;
+  public Widget(Type type, String name, String size, String text, String src, String isOrder) {
+
     this.type = type;
     this.name = name;
     this.size = size;

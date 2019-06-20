@@ -2,11 +2,14 @@ package com.example.wbdvsu19xuankongmyappassignment6.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,6 +29,8 @@ public class Topic {
   @JsonIgnore
   private Lesson lesson;
 
+  @OneToMany(mappedBy = "topic")
+  private List<Widget> widgets;
 
   public Long getId() {
     return id;

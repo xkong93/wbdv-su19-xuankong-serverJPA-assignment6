@@ -28,34 +28,31 @@ public class CourseController {
   @Autowired
   CourseService service;
 
-  CourseController() {
-  }
-
-  @PostMapping("/api/courses")
+  @PostMapping("/api/course")
   public List<Course> createCourse (
           @RequestBody Course newCourse){
     service.createCourse(newCourse);
     return service.findAllCourses();
   }
 
-  @GetMapping("/api/courses")
+  @GetMapping("/api/course")
   public List<Course> findAllCourses(){
     return service.findAllCourses();
   }
 
-  @GetMapping("/api/courses/{cid}")
+  @GetMapping("/api/course/{cid}")
   public Course findCourseById(@PathVariable("cid") Long cid){
     return service.findCourseById(cid);
   }
 
-  @PutMapping("/api/courses/{cid}")
+  @PutMapping("/api/course/{cid}")
   public Course updateCourse(
           @PathVariable("cid") Long cid,
           @RequestBody Course course){
     return service.updateCourse(cid,course);
   }
 
-  @DeleteMapping("/api/courses/{cid}")
+  @DeleteMapping("/api/course/{cid}")
   public void deleteCourse(
           @PathVariable("cid") Long cid){
     service.deleteCourse(cid);

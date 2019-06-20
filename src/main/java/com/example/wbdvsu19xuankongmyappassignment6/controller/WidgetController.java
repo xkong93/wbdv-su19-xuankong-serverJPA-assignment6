@@ -32,14 +32,14 @@ public class WidgetController {
 
   }
 
-  @PostMapping("/api/widgets")
+  @PostMapping("/api/widget")
   public List<Widget> createWidget(
           @RequestBody Widget widget) {
     widgetService.createWidget(widget);
     return widgetService.findAllWigets();
   }
 
-  @GetMapping("/api/widgets")
+  @GetMapping("/api/widget")
   public List<Widget> findAllWigets(Widget widget) {
 
     return widgetService.findAllWigets();

@@ -26,7 +26,7 @@ public class ModuleController {
   @Autowired
   ModuleService service;
 
-  @PostMapping("/api/courses/{cid}/modules")
+  @PostMapping("/api/course/{cid}/module")
   public List<Module> createModule(
           @PathVariable("cid") Long cid,
           @RequestBody Module newModule) {
@@ -34,17 +34,17 @@ public class ModuleController {
     return service.findAllModuleForCourse(cid);
   }
 
-  @GetMapping("/api/courses/{cid}/modules")
+  @GetMapping("/api/course/{cid}/module")
   public List<Module> findAllModules(@PathVariable("cid") Long cid) {
     return service.findAllModuleForCourse(cid);
   }
 
-  @GetMapping("/api/modules/{mid}")
+  @GetMapping("/api/module/{mid}")
   public Module findModuleById(@PathVariable("mid") Long mid) {
     return service.findModuleById(mid);
   }
 
-  @PutMapping("/api/modules/{mid}")
+  @PutMapping("/api/module/{mid}")
   public Module updateModule(
           @PathVariable("mid") Long mid,
           @RequestBody Module module) {
@@ -52,7 +52,7 @@ public class ModuleController {
 
   }
 
-  @DeleteMapping("api/modules/{mid}")
+  @DeleteMapping("api/module/{mid}")
   public void deleteModule(@PathVariable("mid") Long mid) {
     service.deleteModule(mid);
   }

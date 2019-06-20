@@ -23,7 +23,7 @@ public class LessonController {
   LessonService service;
 
 
-  @PostMapping("/api/modules/{mid}/lessons")
+  @PostMapping("/api/module/{mid}/lesson")
   public List<Lesson> createLesson(
     @PathVariable("mid") Long mid,
     @RequestBody Lesson newLesson){
@@ -31,17 +31,17 @@ public class LessonController {
     return findAllLessons(mid);
   }
 
-  @GetMapping("/api/modules/{mid}/lessons")
+  @GetMapping("/api/module/{mid}/lesson")
   public List<Lesson> findAllLessons(@PathVariable("mid") Long mid){
     return service.findAllLessonForModule(mid);
   }
 
-  @GetMapping("/api/lessons/{lid}")
+  @GetMapping("/api/lesson/{lid}")
   public Lesson findLessonById(@PathVariable("lid") Long lid){
     return service.findLessonById(lid);
   }
 
-  @PutMapping("api/lessons/{lid}")
+  @PutMapping("api/lesson/{lid}")
   public Lesson updateLesson(
     @PathVariable("lid") Long lid,
     @RequestBody Lesson lesson){
@@ -49,7 +49,7 @@ public class LessonController {
     return service.updateLesson(lid,lesson);
   }
 
-  @DeleteMapping("/api/lessons/{lid}")
+  @DeleteMapping("/api/lesson/{lid}")
   public void deleteLesson(@PathVariable("lid") Long lid){
     service.deleteLesson(lid);
   }
