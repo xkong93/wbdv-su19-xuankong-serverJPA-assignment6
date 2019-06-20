@@ -28,14 +28,13 @@ public class ModuleService {
 
   public List<Module> addModuleToCourse(Long cid, Module newModule) {
     Course course = courseRepository.findById(cid).get();
-    newModule.setCourse(course); // now it has ref to course
+    newModule.setCourse(course); // now it has ref to the course it belongs to
     repository.save(newModule); // save it to the dbs
     return findAllModuleForCourse(cid);
   }
 
   public List<Module> findAllModuleForCourse(Long cid) {
     Course course = courseRepository.findById(cid).get();
-        System.out.println(course);
 
     List<Module> modules = course.getModules();
 
@@ -50,7 +49,7 @@ public class ModuleService {
     return repository.findById(mid).get();
   }
 
-  //Do i need to update course in the module ??
+  //Do i need to update the correspond course in the module ??
   public Module updateModule(Long mid, Module module){
     Module updateModule = repository.findById(mid).get();
     updateModule.setTitle(module.getTitle());

@@ -2,11 +2,14 @@ package com.example.wbdvsu19xuankongmyappassignment6.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,9 +28,13 @@ public class Module {
   private String title;
 
 
+
   @ManyToOne
   @JsonIgnore
   private Course course;
+
+ @OneToMany(mappedBy = "module")
+  private List<Lesson> lessons;
 
   @Transient
   public String getCourseTitle() {
@@ -59,5 +66,11 @@ public class Module {
     this.title = title;
   }
 
+  public List<Lesson> getLessons() {
+    return lessons;
+  }
 
+  public void setLessons(List<Lesson> lessons) {
+    this.lessons = lessons;
+  }
 }
