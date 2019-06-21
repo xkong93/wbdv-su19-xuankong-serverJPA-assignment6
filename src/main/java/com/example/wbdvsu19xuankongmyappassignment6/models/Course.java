@@ -2,6 +2,7 @@ package com.example.wbdvsu19xuankongmyappassignment6.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,7 @@ public class Course {
 
   //reason: course might have several one to many relationships
   // so it needs use mappedBy to identify which obj you want to map
-  @OneToMany(mappedBy = "course")
+  @OneToMany(mappedBy = "course" ,cascade = CascadeType.REMOVE, orphanRemoval = true)
   private List<Module> modules;
 
 

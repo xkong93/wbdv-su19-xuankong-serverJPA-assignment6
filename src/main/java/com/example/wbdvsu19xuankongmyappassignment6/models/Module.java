@@ -2,8 +2,12 @@ package com.example.wbdvsu19xuankongmyappassignment6.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,12 +32,13 @@ public class Module {
   private String title;
 
 
-
   @ManyToOne
   @JsonIgnore
+//  @OnDelete(action = OnDeleteAction.CASCADE)
+
   private Course course;
 
- @OneToMany(mappedBy = "module")
+  @OneToMany(mappedBy = "module",cascade = CascadeType.REMOVE, orphanRemoval = true)
   private List<Lesson> lessons;
 
   @Transient

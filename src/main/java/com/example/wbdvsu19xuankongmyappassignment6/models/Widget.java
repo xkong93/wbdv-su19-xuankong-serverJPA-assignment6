@@ -2,6 +2,9 @@ package com.example.wbdvsu19xuankongmyappassignment6.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -40,6 +43,8 @@ public class Widget {
 
   @ManyToOne
   @JsonIgnore
+//          @OnDelete(action = OnDeleteAction.CASCADE)
+
   private Topic topic;
 
   public Widget() {

@@ -27,7 +27,7 @@ public class WidgetController {
 
   @Autowired
   WidgetService widgetService;
-  
+
   @PostMapping("/api/topic/{tid}/widget")
   public List<Widget> createWidget(
           @PathVariable("tid") Long tid,

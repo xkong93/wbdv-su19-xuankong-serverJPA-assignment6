@@ -4,6 +4,7 @@ import com.example.wbdvsu19xuankongmyappassignment6.models.Topic;
 import com.example.wbdvsu19xuankongmyappassignment6.services.TopicService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,8 @@ import java.util.List;
  * @Date 2019-06-19.
  */
 @RestController
+@CrossOrigin("*")
+
 public class TopicController {
 
   @Autowired
