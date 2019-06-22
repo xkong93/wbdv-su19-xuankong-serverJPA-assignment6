@@ -41,11 +41,11 @@ public class Widget {
   private String src;
   private String isOrder;
 
-  @ManyToOne
-  @JsonIgnore
-//          @OnDelete(action = OnDeleteAction.CASCADE)
-
-  private Topic topic;
+//  @ManyToOne
+//  @JsonIgnore
+////          @OnDelete(action = OnDeleteAction.CASCADE)
+//
+//  private Topic topic;
 
   public Widget() {
   }
@@ -116,11 +116,11 @@ public class Widget {
     this.isOrder = isOrder;
   }
 
-  public Topic getTopic() {
-    return topic;
-  }
-
-  public void setTopic(Topic topic) {
-    this.topic = topic;
-  }
+//  public Topic getTopic() {
+//    return topic;
+//  }
+//
+//  public void setTopic(Topic topic) {
+//    this.topic = topic;
+//  }
 }
