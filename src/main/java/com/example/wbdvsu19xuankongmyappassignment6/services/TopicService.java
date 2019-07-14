@@ -37,7 +37,7 @@ public class TopicService {
     return lesson.getTopics();
   }
 
-  public List<Topic> findAllTopic() {
+  public List<Topic> findAllTopics() {
     return (List<Topic>) repository.findAll();
   }
 

@@ -36,8 +36,8 @@ public class Topic {
   private Lesson lesson;
 
 
-//  @OneToMany(mappedBy = "topic",cascade = CascadeType.REMOVE, orphanRemoval = true)
-//  private List<Widget> widgets;
+  @OneToMany(mappedBy = "topic",cascade = CascadeType.REMOVE, orphanRemoval = true)
+  private List<Widget> widgets;
 
   public Long getId() {
     return id;
@@ -63,11 +63,11 @@ public class Topic {
     this.lesson = lesson;
   }
 
-//  public List<Widget> getWidgets() {
-//    return widgets;
-//  }
-//
-//  public void setWidgets(List<Widget> widgets) {
-//    this.widgets = widgets;
-//  }
+  public List<Widget> getWidgets() {
+    return widgets;
+  }
+
+  public void setWidgets(List<Widget> widgets) {
+    this.widgets = widgets;
+  }
 }

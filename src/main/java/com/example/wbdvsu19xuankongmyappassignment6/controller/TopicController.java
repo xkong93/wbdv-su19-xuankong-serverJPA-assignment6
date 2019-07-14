@@ -29,15 +29,20 @@ public class TopicController {
 
   @PostMapping("/api/lesson/{lid}/topic")
   public List<Topic> createTopic(
-    @PathVariable("lid") Long lid,
-    @RequestBody Topic newTopic) {
+          @PathVariable("lid") Long lid,
+          @RequestBody Topic newTopic) {
     service.addTopicToLesson(lid, newTopic);
-    return findAllTopics(lid);
+    return findAllTopicsForLesson(lid);
   }
 
   @GetMapping("/api/lesson/{lid}/topic")
-  public List<Topic> findAllTopics(@PathVariable("lid") Long lid) {
+  public List<Topic> findAllTopicsForLesson(@PathVariable("lid") Long lid) {
     return service.findAllTopicForLesson(lid);
+  }
+
+  @GetMapping("/api/topic")
+  public List<Topic> findAllTopics() {
+    return service.findAllTopics();
   }
 
   @GetMapping("/api/topic/{tid}")
@@ -47,8 +52,8 @@ public class TopicController {
 
   @PutMapping("api/topic/{tid}")
   public Topic updateTopic(
-    @PathVariable("tid") Long tid,
-    @RequestBody Topic topic) {
+          @PathVariable("tid") Long tid,
+          @RequestBody Topic topic) {
 
     return service.updateTopic(tid, topic);
   }

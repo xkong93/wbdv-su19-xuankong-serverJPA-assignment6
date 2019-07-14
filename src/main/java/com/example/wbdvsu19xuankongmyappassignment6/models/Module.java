@@ -35,7 +35,6 @@ public class Module {
   @ManyToOne
   @JsonIgnore
 //  @OnDelete(action = OnDeleteAction.CASCADE)
-
   private Course course;
 
   @OneToMany(mappedBy = "module",cascade = CascadeType.REMOVE, orphanRemoval = true)

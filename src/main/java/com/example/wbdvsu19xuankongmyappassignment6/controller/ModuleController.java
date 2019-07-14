@@ -31,12 +31,16 @@ public class ModuleController {
           @PathVariable("cid") Long cid,
           @RequestBody Module newModule) {
     service.addModuleToCourse(cid, newModule);
-    return service.findAllModuleForCourse(cid);
+    return findAllModulesForCourse(cid);
   }
 
   @GetMapping("/api/course/{cid}/module")
-  public List<Module> findAllModules(@PathVariable("cid") Long cid) {
+  public List<Module> findAllModulesForCourse(@PathVariable("cid") Long cid) {
     return service.findAllModuleForCourse(cid);
+  }
+  @GetMapping("/api/module")
+  public List<Module> findAllModules() {
+    return service.findAllModules();
   }
 
   @GetMapping("/api/module/{mid}")

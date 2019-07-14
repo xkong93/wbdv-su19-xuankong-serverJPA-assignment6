@@ -20,20 +20,20 @@ public class WidgetService {
   @Autowired
   WidgetRepository repository;
 
-//  @Autowired
-//  TopicRepository topicRepository;
+  @Autowired
+  TopicRepository topicRepository;
 
-//  public List<Widget> addWidgetToTopic(Long tid, Widget newWidget) {
-//    Topic topic = topicRepository.findById(tid).get();
-//    newWidget.setTopic(topic);
-//    repository.save(newWidget);
-//    return findAllWidgetForTopic(tid);
-//  }
+  public List<Widget> addWidgetToTopic(Long tid, Widget newWidget) {
+    Topic topic = topicRepository.findById(tid).get();
+    newWidget.setTopic(topic);
+    repository.save(newWidget);
+    return findAllWidgetForTopic(tid);
+  }
 
-// public List<Widget> findAllWidgetForTopic(Long tid) {
-//    Topic topic = topicRepository.findById(tid).get();
-//    return topic.getWidgets();
-//  }
+ public List<Widget> findAllWidgetForTopic(Long tid) {
+    Topic topic = topicRepository.findById(tid).get();
+    return topic.getWidgets();
+  }
 
   public List<Widget> createWidget(Widget newWidget){
     repository.save(newWidget);
@@ -58,6 +58,7 @@ public class WidgetService {
     widget.setIsOrder(newWidget.getIsOrder());
     repository.save(widget);
     return widget;
+
   }
 
   public void deleteWidget(Long wid) {

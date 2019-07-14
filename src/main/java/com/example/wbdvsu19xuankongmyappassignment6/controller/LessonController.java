@@ -33,14 +33,18 @@ public class LessonController {
     @PathVariable("mid") Long mid,
     @RequestBody Lesson newLesson){
     service.addLessonToModule(mid,newLesson);
-    return findAllLessons(mid);
+    return findAllLessonForModule(mid);
   }
 
   @GetMapping("/api/module/{mid}/lesson")
-  public List<Lesson> findAllLessons(@PathVariable("mid") Long mid){
+  public List<Lesson> findAllLessonForModule(@PathVariable("mid") Long mid){
     return service.findAllLessonForModule(mid);
   }
 
+  @GetMapping("/api/lesson")
+  public List<Lesson> findAllLessons(){
+    return service.findAllLesson();
+  }
   @GetMapping("/api/lesson/{lid}")
   public Lesson findLessonById(@PathVariable("lid") Long lid){
     return service.findLessonById(lid);

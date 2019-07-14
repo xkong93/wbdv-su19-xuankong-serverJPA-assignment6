@@ -33,7 +33,6 @@ public class Lesson {
   @ManyToOne
   @JsonIgnore
 //          @OnDelete(action = OnDeleteAction.CASCADE)
-
   private Module module;
 
   @OneToMany(mappedBy = "lesson",cascade = CascadeType.REMOVE, orphanRemoval = true)

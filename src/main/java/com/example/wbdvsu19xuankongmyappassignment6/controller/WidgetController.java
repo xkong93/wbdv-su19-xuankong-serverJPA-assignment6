@@ -28,16 +28,16 @@ public class WidgetController {
   @Autowired
   WidgetService widgetService;
 
-  @PostMapping("/api/widget")
-  public List<Widget> createWidget(
+  @PostMapping("/api/topic/{tid}/widget")
+  public List<Widget> createWidget( @PathVariable("tid") Long tid,
           @RequestBody Widget widget) {
-    widgetService.createWidget(widget);
-    return findAllWigets();
+    widgetService.addWidgetToTopic(tid,widget);
+    return findAllWigetsForTopic(tid);
   }
 
-  @GetMapping("/api/widget")
-  public List<Widget> findAllWigets() {
-    return widgetService.findAllWigets();
+  @GetMapping("/api/topic/{tid}/widget")
+  public List<Widget> findAllWigetsForTopic(@PathVariable("tid") Long tid) {
+    return widgetService.findAllWidgetForTopic(tid);
   }
 
 
